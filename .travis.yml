@@ -13,6 +13,7 @@ after_success:
   - docker build -t jfiz/complex-nginx ./nginx
   - docker build -t jfiz/complex-server ./server
   - docker build -t jfiz/complex-worker ./worker
+  
   # Log in to the docker CLI
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
