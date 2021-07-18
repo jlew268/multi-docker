@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "ContainerDefinitions": [
+        {
+            "name": "client",
+            "image": "jfiz/complex-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "jfiz/complex-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "jfiz/complex-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "jfiz/complex-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [ "client", "server" ]
+        }
+    ]
+}
